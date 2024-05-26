@@ -1,1 +1,0 @@
-// Algoritmo que solicita una contraseña al usuario hasta que ingrese "ESC"
