@@ -7,18 +7,21 @@ document.addEventListener("DOMContentLoaded", function() {
     // Define el objeto con la contraseña y la pista.
     let imagen = document.createElement("img");
     imagen.setAttribute("src", "./img/padlock-cerrado.png");
+    imagen.className = "imagen-centrada";
     let tuContenedor = document.getElementById("tu-contenedor");
     tuContenedor.appendChild(imagen);
 
     let imagenDos = document.createElement("img");
     imagenDos.setAttribute("src", "./img/close-159133_1920.png");
+    imagenDos.className = "imagenDos-centrada";
     imagenDos.addEventListener("load", function() {
         console.log("ImagenDos cargada correctamente");
+        console.log ("imagenDos");
     });
 
     let contenedorDos = document.getElementsByClassName ("contenedorDos");
     let imagenTres = document.createElement("img");
-    imagenTres.setAttribute("src", "./img/open-cable");
+    imagenTres.setAttribute("src", "./img/open-cable.png");
 
     const contrasenas = [
         { nombre: 'unicornio', contrasena: 'ESC', pista: 'Las iniciales de un teclado' },
@@ -64,7 +67,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Agrega el event listener a las imágenes
     imagen.addEventListener("click", gestionarIntentos);
     imagenDos.addEventListener("click", gestionarIntentos);
 });
+// localStorage.setItem ("contraseña" ,"ESC");
+
+// sessionStorage.setItem ("color", "rojo");
