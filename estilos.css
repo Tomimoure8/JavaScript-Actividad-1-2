@@ -1,0 +1,27 @@
+body {
+    background-color: black;
+}
+#tu-contenedor {
+    display: flex;
+    justify-content: center;
+    padding: red 50px;
+    border-color: mediumspringgreen;
+    width: 100%;
+    border-style: dotted;
+    color: rebeccapurple;
+    height: 50%;
+}
+.imagen-centrada {
+    height: 50%;
+    width: auto;
+}
+.contenedorDos {
+    display: flex;
+    justify-content: center;
+    border-style: dashed;
+    border-color: blue;
+    height: 50%;
+    padding: 50px;
+    width: 100%;
+    color: azure;
+}
