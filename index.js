@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const imagenTres = document.createElement("img");
     imagenTres.setAttribute("src", "./img/open-cable.png");
+    imagenTres.className = "imagenTres-centrada";
     const nuevaImagen = imagenTres;
 
     function cambiarImagen(nuevaImagen) {
@@ -40,13 +41,18 @@ document.addEventListener("DOMContentLoaded", function() {
     function verificarContrasena(contrasenaIngresada, contrasenaObjeto) {
         const esCorrecta = contrasenaIngresada === contrasenaObjeto.contrasena;
         console.log("Verificando contraseña: " + (esCorrecta ? "Correcta" : "Incorrecta"));
+        localStorage.setItem ("intento-contraseña",  contrasenaIngresada);
         return esCorrecta;
-    }
+    };
+
+
 
     // Bucle para gestionar los intentos.
     function gestionarIntentos() {
         imagen.remove();
         let intentos = 5;
+        let intentosContraseña = [];
+
         while (intentos > 0) {
             const intento = prompt("Ingresar contraseña");
             console.log("Intento número " + (6 - intentos) + ": " + intento);
@@ -61,15 +67,23 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Contraseña correcta");
             cambiarImagen(imagenTres);
             tuContenedor.removeChild(imagenDos);
+
+            document.getElementById("contenedor-input-boton").style.display = "block";
+
             break;
         } else {
             alert("Contraseña incorrecta. Te quedan " + (intentos - 1) + " intentos.");
             intentos--;
         }
+
+        intentosContraseña.push (intento);
     }
 
       // Mensaje final si se agotan los intentos.
     if (intentos === 0) {
+        const intentosJSON = JSON.stringify (intentosContraseña);
+        sessionStorage.setItem ("intentos-contraseña", intentosJSON);
+
         const pistas = contrasenas.map(
             obj => "La contraseña del " + obj.nombre + " era: " + obj.contrasena + ", pista: " + obj.pista
         );
@@ -81,5 +95,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     imagen.addEventListener("click", gestionarIntentos);
     imagenDos.addEventListener("click", gestionarIntentos);
+    imagenTres.addEventListener("click", function() {
+        imagenTres.style.display = "none";
+    });
 });
+
 
