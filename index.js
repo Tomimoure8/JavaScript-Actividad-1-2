@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Pide al usuario ingresar la contraseña del unicornio.
-    alert("Ingrese la contraseña secreta del unicornio ");
-    alert("Si no la adivina no me hago cargo de las consecuencias ");
-    alert("Haz clic en el siguiente candado");
+    alert("Ingrese la contraseña secreta");
+    alert("PISTA\nEs una tecla que tiene una vocal y dos consonantes");
+    alert("Hace click en el siguiente candado para empezar");
 
     // Define el objeto con la contraseña y la pista.
     const imagen = document.createElement("img");
@@ -23,6 +23,17 @@ document.addEventListener("DOMContentLoaded", function() {
     imagenTres.setAttribute("src", "./img/open-cable.png");
     imagenTres.className = "imagenTres-centrada";
     const nuevaImagen = imagenTres;
+
+    // NUEVO
+    let contenedorInputBoton = document.getElementById ("contenedor-input-boton");
+    let botonCodigo = document.getElementById ("verificar-contrasena");
+    contenedorInputBoton.appendChild (botonCodigo);
+    // NUEVO
+
+    // NUEVO
+    let titulo = document.createElement ("h1");
+    titulo.innerText = "FIN DEL JUEGO";
+
 
     function cambiarImagen(nuevaImagen) {
         const contenedor = document.getElementById("tu-contenedor");
@@ -66,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (contrasenaObjeto) {
             alert("Contraseña correcta");
             cambiarImagen(imagenTres);
+            alert ("AHORA Presiona el candado para SACARLO y concluír el juego debajo");
             tuContenedor.removeChild(imagenDos);
 
             document.getElementById("contenedor-input-boton").style.display = "block";
@@ -98,6 +110,19 @@ document.addEventListener("DOMContentLoaded", function() {
     imagenTres.addEventListener("click", function() {
         imagenTres.style.display = "none";
     });
+    //NUEVO
+    botonCodigo.addEventListener("click", function() {
+        const contrasenaIngresada = document.getElementById("contrasena-usuario").value;
+        const contrasenaObjeto = contrasenas.find(obj => verificarContrasena(contrasenaIngresada, obj));
+
+        if (contrasenaObjeto && contrasenaIngresada === "ESC") {
+            alert("¡Contraseña correcta!\n¡Parece que te quedó claro!"); // Mostrar la alerta
+            tuContenedor.appendChild (titulo);
+        } else {
+            alert("Contraseña incorrecta.\nVeo que no aprendiste nada.");
+        }
+    });
+    // NUEVO
 });
 
 
