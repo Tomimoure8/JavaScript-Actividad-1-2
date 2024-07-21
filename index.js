@@ -1,8 +1,21 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Pide al usuario ingresar la contraseña del unicornio.
-    alert("Ingrese la contraseña secreta");
-    alert("PISTA\nEs una tecla que tiene una vocal y dos consonantes");
-    alert("Hace click en el siguiente candado para empezar");
+    Swal.fire({
+        title: 'Bienvenido al juego',
+        text: 'Ingrese la contraseña secreta para continuar.',
+        icon: 'info'
+    }).then(() => {
+        Swal.fire({
+            title: 'Pista',
+            text: 'Es una tecla que tiene una vocal y dos consonantes.',
+            icon: 'info'
+        }).then(() => {
+        Swal.fire({
+            title: '¡Empieza!',
+            text: 'Hace click en el candado para comenzar.',
+            icon: 'info'
+        });
+    });
+});
 
     // Define el objeto con la contraseña y la pista.
     const imagen = document.createElement("img");
@@ -56,8 +69,6 @@ document.addEventListener("DOMContentLoaded", function() {
         return esCorrecta;
     };
 
-
-
     // Bucle para gestionar los intentos.
     function gestionarIntentos() {
         imagen.remove();
@@ -75,10 +86,19 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         if (contrasenaObjeto) {
-            alert("Contraseña correcta");
+            Swal.fire({
+                title: 'Contraseña correcta!',
+                text: 'Felicitaciones por haber acertado',
+                icon: 'success',
+            }).then(() => {
             cambiarImagen(imagenTres);
-            alert ("AHORA Presiona el candado para SACARLO y concluír el juego debajo");
+                Swal.fire({
+                    title: 'Verifica la contraseña!',
+                    text: 'AHORA Presiona el candado para SACARLO y concluír el juego debajo',
+                    icon: 'info',
+                }).
             tuContenedor.removeChild(imagenDos);
+            });
 
             document.getElementById("contenedor-input-boton").style.display = "block";
 
@@ -116,13 +136,22 @@ document.addEventListener("DOMContentLoaded", function() {
         const contrasenaObjeto = contrasenas.find(obj => verificarContrasena(contrasenaIngresada, obj));
 
         if (contrasenaObjeto && contrasenaIngresada === "ESC") {
-            alert("¡Contraseña correcta!\n¡Parece que te quedó claro!"); // Mostrar la alerta
+            Swal.fire({
+                title: 'Contraseña correcta!',
+                text: '¡Parece que te quedó claro!',
+                icon: 'success',
+            }). then (() => {
             tuContenedor.appendChild (titulo);
+        });
         } else {
-            alert("Contraseña incorrecta.\nVeo que no aprendiste nada.");
+            Swal.fire({
+                title: 'Contraseña incorrecta!',
+                text: '¡Parece que no aprendiste nada!',
+                icon: 'error',
+            });
         }
     });
-    // NUEVO
 });
+
 
 
