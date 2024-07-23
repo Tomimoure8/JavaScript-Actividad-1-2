@@ -37,11 +37,21 @@ document.addEventListener("DOMContentLoaded", function() {
     imagenTres.className = "imagenTres-centrada";
     const nuevaImagen = imagenTres;
 
-    // NUEVO
+
     let contenedorInputBoton = document.getElementById ("contenedor-input-boton");
     let botonCodigo = document.getElementById ("verificar-contrasena");
     contenedorInputBoton.appendChild (botonCodigo);
-    // NUEVO
+
+
+    function crearListaPeliculas(peliculas) {
+        const listaPeliculas = document.createElement("ul");
+        peliculas.forEach(pelicula => {
+            const itemLista = document.createElement("li");
+            itemLista.textContent = `Título: ${pelicula.titulo}, Género: ${pelicula.genero}, Director: ${pelicula.director}, Año: ${pelicula.año}`;
+            listaPeliculas.appendChild(itemLista);
+        });
+        return listaPeliculas;
+    }
 
     // NUEVO
     let titulo = document.createElement ("h1");
@@ -130,28 +140,44 @@ document.addEventListener("DOMContentLoaded", function() {
     imagenTres.addEventListener("click", function() {
         imagenTres.style.display = "none";
     });
-    //NUEVO
+
     botonCodigo.addEventListener("click", function() {
         const contrasenaIngresada = document.getElementById("contrasena-usuario").value;
         const contrasenaObjeto = contrasenas.find(obj => verificarContrasena(contrasenaIngresada, obj));
 
-        if (contrasenaObjeto && contrasenaIngresada === "ESC") {
-            Swal.fire({
-                title: 'Contraseña correcta!',
-                text: '¡Parece que te quedó claro!',
-                icon: 'success',
-            }). then (() => {
-            tuContenedor.appendChild (titulo);
+    if (contrasenaObjeto && contrasenaIngresada === "ESC") {
+        fetch("recompensas.json")
+            .then(response => response.json())
+            .then(peliculas => {
+            mostrarListaPeliculas(peliculas);
+            tuContenedor.appendChild(titulo);
+        })
+        .catch(error => console.error("Error cargando la lista de películas:", error));
+    } else {
+        Swal.fire({
+            title: 'Contraseña incorrecta!',
+            text: '¡Parece que no aprendiste nada!',
+            icon: 'error',
         });
-        } else {
-            Swal.fire({
-                title: 'Contraseña incorrecta!',
-                text: '¡Parece que no aprendiste nada!',
-                icon: 'error',
-            });
-        }
-    });
+    }
 });
 
+    // Función para mostrar la lista de películas
+    function mostrarListaPeliculas(peliculas) {
+        const listaPeliculas = crearListaPeliculas(peliculas);
+        const contenedor = document.getElementById("tu-contenedor");
+        contenedor.appendChild(listaPeliculas);
 
-
+        Swal.fire({
+            title: 'Contraseña correcta!',
+            text: 'Parece que te quedó claro',
+            icon: 'success',
+        }).then(() => {
+                Swal.fire({
+                    title: 'Felicitaciones por completar el juego!',
+                    text: 'Como recompensa, te recomiendo estas 3 peliculas.',
+                    icon: 'success',
+                })
+            });
+    }
+});

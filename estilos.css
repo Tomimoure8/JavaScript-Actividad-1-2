@@ -4,6 +4,7 @@ body {
 
 #tu-contenedor {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-color: mediumspringgreen;
@@ -12,6 +13,7 @@ body {
     color: rebeccapurple;
     height: 400px;
     position: relative;
+    margin-top: 20px;
 }
 
 .imagen-centrada {
@@ -51,5 +53,24 @@ body {
 
 h1 {
     color:deepskyblue;
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+    left: 20px;
 }
+
+/* Estilos para la lista de películas */
+#tu-contenedor ul {
+    list-style: none; 
+    padding: 0; 
+    margin: 20px 0; 
+    color: deepskyblue;
+}
+#tu-contenedor ul li {
+    margin-bottom: 10px; 
+    font-size: 16px; 
+    line-height: 1.5; 
+}
+
+
 

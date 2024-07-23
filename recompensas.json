@@ -1,0 +1,20 @@
+[
+    {
+        "titulo": "Spider-Man 2",
+        "genero": "Acción, Ciencia ficción",
+        "director": "Sam Raimi",
+        "año": 2004
+    },
+    {
+        "titulo": "Soul",
+        "genero": "Infantil, Fantasía",
+        "director": "Pete Docter",
+        "año": 2020
+    },
+    {
+        "titulo": "Volver al futuro",
+        "genero": "Infantil, Ciencia ficción",
+        "director": "Robert Zemeckis",
+        "año": 1985
+    }
+]
