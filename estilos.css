@@ -76,33 +76,33 @@ input[type="text"] {
     height: 19px; 
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px; /* Bordes redondeados */
-    font-family: 'Arial', sans-serif; /* Elige tu tipografía favorita */
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
     font-size: 16px;
     color: #292828;
-    background-color:#292828; /* Color de fondo */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    background-color:#292828;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-  input[type="text"]:focus { /* Estilo cuando el campo está enfocado */
-    outline: none; /* Elimina el borde por defecto */
+input[type="text"]:focus {
+    outline: none;
     border-color: #999;
     background-color: #e0e0e0;
 }
 
 button {
-    background-color:orange; /* Color de fondo */
+    background-color:orange;
     color: white;
     padding: 12px 20px;
     margin: 3px;
     border: 1px solid #ccc;
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 5px;
     border-color: #999;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Efecto de transición */
+    transition: background-color 0.3s ease;
 }
 
-  button:hover { /* Estilo cuando se pasa el cursor sobre el botón */
+button:hover {
     background-color:darkgray!important; 
 }
 
